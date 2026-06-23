@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DECODED NEWS | Fake News e IA</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="logo">DECODED NEWS</div>
+    <nav>
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="tipos.html" data-i18n="nav.tipos">Tipos</a>
+        <a href="identificar.html" data-i18n="nav.identify">Como Identificar</a>
+        <a href="quiz.html" data-i18n="nav.quiz">Quiz</a>
+        <a href="exemplos.html" data-i18n="nav.examples">Exemplos</a>
+        <a href="IA.html" data-i18n="nav.ia">IA</a>
+        <a href="guerras.html" data-i18n="nav.war">WAR</a>
+        <a href="mapa.html" data-i18n="nav.map">Mapa</a>
+    </nav>
+
+     <div class="header-actions">
+        <button class="lang-toggle" aria-label="Trocar idioma">EN</button>
+        <button class="dark-toggle" id="darkToggle" aria-label="Alternar tema">Tema</button>
+    </div>
+    <button class="menu-mobile-btn" id="menuBtn" aria-label="Abrir menu">≡</button>
+    <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <a href="index.html"><span data-i18n="nav.home">Home</span></a>
+        <a href="tipos.html"><span data-i18n="nav.tipos">Tipos</span></a>
+        <a href="identificar.html"><span data-i18n="nav.identify">Como Identificar</span></a>
+        <a href="quiz.html"><span data-i18n="nav.quiz">Quiz</span></a>
+        <a href="exemplos.html"><span data-i18n="nav.examples">Exemplos</span></a>
+        <a href="IA.html"><span data-i18n="nav.ia">IA</span></a>
+        <a href="guerras.html"><span data-i18n="nav.war">WAR</span></a>
+        <a href="mapa.html"><span data-i18n="nav.map">Mapa</span></a>
+    </nav>
+    <div class="mobile-overlay" id="overlay"></div>
+    </div>
+</header>
+
+    <section class="page-banner">
+        <div class="banner-content">
+            <span class="tag" data-i18n="ia.banner.tag">INTELIGÊNCIA ARTIFICIAL</span>
+            <h1 data-i18n="ia.banner.h1">Fake News e Inteligência Artificial</h1>
+            <p data-i18n="ia.banner.p">A IA pode criar textos, vozes e imagens falsas em segundos. Veja casos reais e aprenda a se proteger.</p>
+        </div>
+    </section>
+
+    <section class="news-posts">
+
+        <div class="news-post">
+            <span class="news-type fake-label" data-i18n="ia.post1.type">Deepfake · 2024</span>
+            <img src="imgs/6ab6754d-6704-4fbb-b0a3-ced8fb295999.png" alt="Deepfake presidente">
+            <h2 data-i18n="ia.post1.h2">Vídeo falso de presidente anunciando guerra viraliza nas redes</h2>
+            <p data-i18n="ia.post1.p">Um deepfake de alta qualidade circulou em redes sociais mostrando um chefe de Estado em suposta declaração de guerra. O vídeo foi criado com IA generativa e enganou milhões de pessoas antes de ser desmentido por agências internacionais de checagem.</p>
+            <small data-i18n="ia.post1.small">Verificado por: Reuters Fact Check · Janeiro de 2024</small>
+        </div>
+
+        <div class="news-post">
+            <span class="news-type fake-label" data-i18n="ia.post2.type">Clonagem de Voz · 2023</span>
+            <img src="imgs/ChatGPT Image 1 de jun. de 2026, 22_41_42.png" alt="Clonagem de voz">
+            <h2 data-i18n="ia.post2.h2">Golpistas usam voz clonada de familiar para extorquir família brasileira</h2>
+            <p data-i18n="ia.post2.p">Com apenas um trecho de áudio retirado de rede social, criminosos clonaram a voz de um jovem e ligaram para seus pais simulando um sequestro. O caso se repetiu em dezenas de famílias no Brasil ao longo de 2023.</p>
+            <small data-i18n="ia.post2.small">Verificado por: Agência Lupa · Setembro de 2023</small>
+        </div>
+
+        <div class="news-post">
+            <span class="news-type fake-label" data-i18n="ia.post3.type">Imagem Falsa · 2023</span>
+            <img src="imgs/skolbber.png" alt="Explosão Pentágono IA">
+            <h2 data-i18n="ia.post3.h2">Foto gerada por IA de "explosão no Pentágono" causa queda na bolsa</h2>
+            <p data-i18n="ia.post3.p">Uma imagem falsa criada por IA mostrando uma explosão próxima ao Pentágono foi amplamente compartilhada no Twitter, causando uma breve queda nos mercados financeiros antes de ser desmentida pelas autoridades americanas.</p>
+            <small data-i18n="ia.post3.small">Verificado por: AFP Checamos · Maio de 2023</small>
+        </div>
+
+    </section>
+
+    <footer data-i18n="footer.txt">DECODED NEWS &nbsp;·&nbsp; Projeto educativo contra a desinformação</footer>
+
+    <script src="java.js"></script>
+</body>
+</html>

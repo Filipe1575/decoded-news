@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DECODED NEWS | Mapa de Criminalidade — Baixada Santista</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .leaflet-popup-content-wrapper {
+            background: var(--card-bg);
+            color: var(--text);
+            border-radius: 12px;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+            border-top: 4px solid #2563eb;
+            font-family: 'Inter', sans-serif;
+        }
+        .leaflet-popup-tip { background: var(--card-bg); }
+        .popup-city-name { font-size: 1rem; font-weight: 900; color: #2563eb; margin-bottom: 8px; }
+        .popup-row { display: flex; justify-content: space-between; gap: 16px; font-size: 0.82rem; padding: 4px 0; border-bottom: 1px solid #e2e8f0; }
+        .popup-row:last-child { border: none; }
+        .popup-row span:first-child { color: #64748b; }
+        .popup-row strong { color: #0f172a; }
+        .popup-fake { margin-top: 8px; background: #fef2f2; border-radius: 8px; padding: 6px 10px; font-size: 0.8rem; color: #dc2626; font-weight: 700; }
+    </style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<header>
+    <div class="logo">DECODED NEWS</div>
+    <nav>
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="tipos.html" data-i18n="nav.tipos">Tipos</a>
+        <a href="identificar.html" data-i18n="nav.identify">Como Identificar</a>
+        <a href="quiz.html" data-i18n="nav.quiz">Quiz</a>
+        <a href="exemplos.html" data-i18n="nav.examples">Exemplos</a>
+        <a href="IA.html" data-i18n="nav.ia">IA</a>
+        <a href="guerras.html" data-i18n="nav.war">WAR</a>
+        <a href="mapa.html" data-i18n="nav.map">Mapa</a>
+    </nav>
+
+    <div class="header-actions">
+        <button class="lang-toggle" aria-label="Trocar idioma">EN</button>
+        <button class="dark-toggle" id="darkToggle" aria-label="Alternar tema">Tema</button>
+    </div>
+    <button class="menu-mobile-btn" id="menuBtn" aria-label="Abrir menu">≡</button>
+    <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <a href="index.html"><span data-i18n="nav.home">Home</span></a>
+        <a href="tipos.html"><span data-i18n="nav.tipos">Tipos</span></a>
+        <a href="identificar.html"><span data-i18n="nav.identify">Como Identificar</span></a>
+        <a href="quiz.html"><span data-i18n="nav.quiz">Quiz</span></a>
+        <a href="exemplos.html"><span data-i18n="nav.examples">Exemplos</span></a>
+        <a href="IA.html"><span data-i18n="nav.ia">IA</span></a>
+        <a href="guerras.html"><span data-i18n="nav.war">WAR</span></a>
+        <a href="mapa.html"><span data-i18n="nav.map">Mapa</span></a>
+    </nav>
+    <div class="mobile-overlay" id="overlay"></div>
+    </div>
+</header>
+
+<!-- BANNER -->
+<section class="page-banner" style="background: linear-gradient(135deg,rgba(7,13,27,0.92) 0%,rgba(29,78,216,0.75) 100%), url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=1400') center/cover;">
+    <div class="banner-content">
+        <span class="tag" data-i18n="map.banner.tag">MAPA DE CRIMINALIDADE</span>
+        <h1 data-i18n="map.title">Mapa de Criminalidade</h1>
+        <p data-i18n="map.subtitle">Baixada Santista — Fake News e Estatísticas de Ocorrências</p>
+    </div>
+</section>
+
+<!-- MAP + STATS -->
+<section class="map-section">
+    <div class="map-layout">
+
+        <!-- MAP -->
+        <div style="position:relative;">
+            <div id="crime-map"></div>
+        </div>
+
+        <!-- STATS PANEL -->
+        <div class="map-stats-panel">
+            <div class="map-stats-header">
+                <h3 data-i18n="map.panel.title">Estatísticas — Baixada Santista</h3>
+                <p data-i18n="map.panel.sub">Dados de furtos, roubos e notícias falsas sobre criminalidade · 2023</p>
+            </div>
+            <div class="map-stats-body">
+
+                <!-- TOTAIS -->
+                <div class="map-stat-cards">
+                    <div class="map-stat-mini">
+                        <div class="num" id="stat-furtos">9.676</div>
+                        <div class="lbl" data-i18n="map.total.theft">Total Furtos</div>
+                    </div>
+                    <div class="map-stat-mini">
+                        <div class="num" id="stat-roubos">4.547</div>
+                        <div class="lbl" data-i18n="map.total.robbery">Total Roubos</div>
+                    </div>
+                    <div class="map-stat-mini">
+                        <div class="num" id="stat-fn" style="color:#dc2626">358</div>
+                        <div class="lbl" data-i18n="map.fn.label">Fake News de crime</div>
+                    </div>
+                    <div class="map-stat-mini">
+                        <div class="num" id="stat-pct" style="color:#dc2626">67%</div>
+                        <div class="lbl" data-i18n="map.fn.pct">% conteúdo falso</div>
+                    </div>
+                </div>
+
+                <!-- SELECTED CITY -->
+                <div class="map-selected-city" id="selectedCityBox" style="display:none">
+                    <h4 id="selectedCityName"></h4>
+                    <div class="map-city-stat"><span data-i18n="map.city.furtos">Furtos</span><span id="sc-furtos"></span></div>
+                    <div class="map-city-stat"><span data-i18n="map.city.roubos">Roubos</span><span id="sc-roubos"></span></div>
+                    <div class="map-city-stat"><span data-i18n="map.city.rate">Taxa/1.000 hab.</span><span id="sc-taxa"></span></div>
+                    <div class="map-city-stat"><span data-i18n="map.city.fn">Fake news registradas</span><span id="sc-fn" style="color:#dc2626"></span></div>
+                    <div class="map-city-stat"><span data-i18n="map.city.pop">População</span><span id="sc-pop"></span></div>
+                </div>
+
+                <p style="font-size:0.78rem;color:var(--text3);text-align:center;margin-bottom:14px;font-style:italic" id="clickHint" data-i18n="map.click">
+                    Clique em uma cidade no mapa para ver detalhes.
+                </p>
+
+                <!-- CHART -->
+                <div class="map-chart-wrap">
+                    <h4 data-i18n="map.chart.title">Ocorrências por cidade</h4>
+                    <canvas id="cityChart" height="180"></canvas>
+                </div>
+
+                <!-- FAKE NEWS CHART -->
+                <div class="map-chart-wrap">
+                    <h4 data-i18n="map.fn.chart.title">Fake news de crime por cidade</h4>
+                    <canvas id="fnChart" height="160"></canvas>
+                </div>
+
+                <!-- LEGEND -->
+                <div class="map-legend">
+                    <h4 data-i18n="map.legend.title">Legenda — Taxa por 1.000 hab.</h4>
+                    <div class="legend-item"><div class="legend-dot" style="background:#dc2626"></div><span data-i18n="map.legend.critical">Crítico (&gt;9.5)</span></div>
+                    <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div><span data-i18n="map.legend.high">Alto (7.5–9.5)</span></div>
+                    <div class="legend-item"><div class="legend-dot" style="background:#3b82f6"></div><span data-i18n="map.legend.medium">Médio (5.0–7.5)</span></div>
+                    <div class="legend-item"><div class="legend-dot" style="background:#10b981"></div><span data-i18n="map.legend.low">Baixo (&lt;5.0)</span></div>
+                </div>
+
+                <p class="map-source" data-i18n="map.source">
+                    Dados ilustrativos baseados em padrões do SSP-SP. Não substituem dados oficiais.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAKE NEWS CONNECTION -->
+<section class="fn-connection reveal">
+    <div style="max-width:1100px;margin:0 auto">
+        <div class="section-header">
+            <span class="tag">DESINFORMAÇÃO</span>
+            <h2 data-i18n="map.fn.section">Como fake news sobre criminalidade afetam a sociedade</h2>
+        </div>
+        <div class="fn-grid">
+            <div class="fn-card">
+                <div class="fn-card-icon"></div>
+                <h3 data-i18n="map.fn.1.h">Percepção distorcida</h3>
+                <p data-i18n="map.fn.1.p">Notícias falsas sobre crimes criam medo exagerado, fazendo populações perceberem cidades seguras como perigosas.</p>
+            </div>
+            <div class="fn-card">
+                <div class="fn-card-icon"></div>
+                <h3 data-i18n="map.fn.2.h">Decisões errôneas</h3>
+                <p data-i18n="map.fn.2.p">Políticas públicas e decisões comerciais podem ser influenciadas por dados falsos amplificados nas redes sociais.</p>
+            </div>
+            <div class="fn-card">
+                <div class="fn-card-icon"></div>
+                <h3 data-i18n="map.fn.3.h">Discriminação regional</h3>
+                <p data-i18n="map.fn.3.p">Fake news associam bairros e cidades a crimes que não aconteceram, gerando preconceito e queda no turismo.</p>
+            </div>
+            <div class="fn-card">
+                <div class="fn-card-icon"></div>
+                <h3 data-i18n="map.fn.4.h">Verificação necessária</h3>
+                <p data-i18n="map.fn.4.p">Sempre confronte notícias sobre crimes com dados oficiais do SSP-SP antes de compartilhar.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-links">
+            <a href="index.html" data-i18n="nav.home">Home</a>
+            <a href="tipos.html" data-i18n="nav.tipos">Tipos</a>
+            <a href="mapa.html" data-i18n="nav.map">Mapa</a>
+        </div>
+        DECODED NEWS &nbsp;·&nbsp; <span data-i18n="footer.txt">Projeto educativo contra a desinformação</span>
+    </div>
+</footer>
+
+<button id="back-to-top" aria-label="Voltar ao topo">↑</button>
+<button class="checker-fab" id="checkerFab" aria-label="Verificar fake news">
+    <span class="checker-fab-icon">✓</span>
+</button>
+<div class="modal-overlay" id="checkerModal">
+    <div class="modal-box checker-modal-box">
+        <div class="modal-header">
+            <h3 data-i18n="checker.title">Verificador</h3>
+            <button class="modal-close" id="checkerClose">×</button>
+        </div>
+        <p data-i18n="checker.p">Cole uma frase ou manchete suspeita:</p>
+        <div class="checker-input-group">
+            <input type="text" id="news-input" data-i18n="checker.placeholder" placeholder="Ex: Vacina causa microchip...">
+            <button onclick="simularVerificacao()" class="btn-accent" data-i18n="checker.btn">Analisar</button>
+        </div>
+        <div id="checker-result" class="checker-result-box hidden"></div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="java.js"></script>
+<script>
+/* ── CRIME DATA — BAIXADA SANTISTA ── */
+const cities = [
+    { name:"Santos",        lat:-23.9608, lng:-46.3336, furtos:2847, roubos:1203, fn:89,  pop:433311 },
+    { name:"São Vicente",   lat:-23.9772, lng:-46.3886, furtos:1654, roubos:891,  fn:54,  pop:371303 },
+    { name:"Guarujá",       lat:-23.9939, lng:-46.2564, furtos:1287, roubos:743,  fn:67,  pop:321613 },
+    { name:"Praia Grande",  lat:-24.0056, lng:-46.4094, furtos:1456, roubos:612,  fn:48,  pop:337493 },
+    { name:"Cubatão",       lat:-23.8978, lng:-46.4253, furtos:893,  roubos:421,  fn:31,  pop:133058 },
+    { name:"Bertioga",      lat:-23.8556, lng:-46.1392, furtos:342,  roubos:189,  fn:18,  pop:66224  },
+    { name:"Mongaguá",      lat:-24.0836, lng:-46.6286, furtos:287,  roubos:134,  fn:12,  pop:57549  },
+    { name:"Itanhaém",      lat:-24.1828, lng:-46.7892, furtos:512,  roubos:198,  fn:22,  pop:109085 },
+    { name:"Peruíbe",       lat:-24.3194, lng:-47.0056, furtos:398,  roubos:156,  fn:17,  pop:71642  }
+];
+
+function getColor(taxa) {
+    if (taxa > 9.5) return '#dc2626';
+    if (taxa > 7.5) return '#f59e0b';
+    if (taxa > 5.0) return '#3b82f6';
+    return '#10b981';
+}
+
+function getRadius(total) {
+    return 18 + (total / 4050) * 28;
+}
+
+/* ── INIT MAP ── */
+const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+const map = L.map('crime-map', {
+    center: [-24.05, -46.58],
+    zoom: 10,
+    zoomControl: true,
+    scrollWheelZoom: true
+});
+
+const lightTile = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© OpenStreetMap © CartoDB', maxZoom: 18
+});
+const darkTile = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© OpenStreetMap © CartoDB', maxZoom: 18
+});
+
+(isDark ? darkTile : lightTile).addTo(map);
+
+/* Update tiles on theme toggle */
+const dtBtn = document.getElementById('darkToggle');
+if(dtBtn) dtBtn.addEventListener('click', () => {
+    setTimeout(() => {
+        const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if(dark) { map.removeLayer(lightTile); darkTile.addTo(map); }
+        else      { map.removeLayer(darkTile);  lightTile.addTo(map); }
+    }, 100);
+});
+
+/* ── MARKERS ── */
+cities.forEach(c => {
+    const total = c.furtos + c.roubos;
+    const taxa  = (total / c.pop) * 1000;
+    const color = getColor(taxa);
+    const radius = getRadius(total);
+
+    const circle = L.circleMarker([c.lat, c.lng], {
+        radius: radius,
+        fillColor: color,
+        color: '#fff',
+        weight: 2.5,
+        opacity: 0.9,
+        fillOpacity: 0.75
+    }).addTo(map);
+
+    // Pulse ring
+    L.circleMarker([c.lat, c.lng], {
+        radius: radius + 6,
+        fillColor: 'transparent',
+        color: color,
+        weight: 1.5,
+        opacity: 0.35
+    }).addTo(map);
+
+    const lang = document.documentElement.getAttribute('data-lang') || 'pt';
+    const pt = lang === 'pt';
+
+    circle.bindPopup(`
+        <div class="popup-city-name">${c.name}</div>
+        <div class="popup-row"><span>${pt?'Furtos':'Thefts'}</span><strong>${c.furtos.toLocaleString('pt-BR')}</strong></div>
+        <div class="popup-row"><span>${pt?'Roubos':'Robberies'}</span><strong>${c.roubos.toLocaleString('pt-BR')}</strong></div>
+        <div class="popup-row"><span>${pt?'Taxa/1.000 hab.':'Rate/1,000 inhab.'}</span><strong>${taxa.toFixed(1)}</strong></div>
+        <div class="popup-row"><span>${pt?'Fake news':'Fake news'}</span><strong style="color:#dc2626">${c.fn} ${pt?'registradas':'reported'}</strong></div>
+        <div class="popup-fake">${pt?`${Math.round((c.fn/total)*1000*100)/100}% do total em fake news`:`${Math.round((c.fn/total)*1000*100)/100}% reported via fake news`}</div>
+    `, { maxWidth: 240 });
+
+    circle.on('click', () => {
+        showCityStats(c, taxa);
+        circle.openPopup();
+    });
+
+    // City label
+    L.marker([c.lat, c.lng], {
+        icon: L.divIcon({
+            html: `<span style="font-size:10px;font-weight:800;color:${isDark?'#e2e8f0':'#0f172a'};white-space:nowrap;text-shadow:0 1px 3px rgba(0,0,0,0.5)">${c.name}</span>`,
+            iconSize: [80, 20],
+            iconAnchor: [40, -10],
+            className: ''
+        })
+    }).addTo(map);
+});
+
+function showCityStats(c, taxa) {
+    const box = document.getElementById('selectedCityBox');
+    const hint = document.getElementById('clickHint');
+    document.getElementById('selectedCityName').textContent = c.name;
+    document.getElementById('sc-furtos').textContent = c.furtos.toLocaleString('pt-BR');
+    document.getElementById('sc-roubos').textContent = c.roubos.toLocaleString('pt-BR');
+    document.getElementById('sc-taxa').textContent = taxa.toFixed(2);
+    document.getElementById('sc-fn').textContent = c.fn + ' registradas';
+    document.getElementById('sc-pop').textContent = c.pop.toLocaleString('pt-BR') + ' hab.';
+    box.style.display = 'block';
+    if (hint) hint.style.display = 'none';
+}
+
+/* ── CHART.JS — OCORRÊNCIAS ── */
+const chartColors = cities.map(c => getColor(((c.furtos+c.roubos)/c.pop)*1000));
+
+const cityChartCtx = document.getElementById('cityChart').getContext('2d');
+new Chart(cityChartCtx, {
+    type: 'bar',
+    data: {
+        labels: cities.map(c => c.name.split(' ')[0]),
+        datasets: [
+            { label: 'Furtos',  data: cities.map(c => c.furtos), backgroundColor: 'rgba(37,99,235,0.75)', borderRadius: 4 },
+            { label: 'Roubos', data: cities.map(c => c.roubos), backgroundColor: 'rgba(220,38,38,0.75)',  borderRadius: 4 }
+        ]
+    },
+    options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { labels: { font: { size: 11, family: 'Inter' }, color: '#64748b', boxWidth: 12 } } },
+        scales: {
+            x: { ticks: { font: { size: 9 }, color: '#64748b' }, grid: { display: false } },
+            y: { ticks: { font: { size: 9 }, color: '#64748b' }, grid: { color: 'rgba(100,116,139,0.1)' } }
+        }
+    }
+});
+
+/* ── CHART.JS — FAKE NEWS ── */
+const fnChartCtx = document.getElementById('fnChart').getContext('2d');
+new Chart(fnChartCtx, {
+    type: 'doughnut',
+    data: {
+        labels: cities.map(c => c.name.split(' ')[0]),
+        datasets: [{
+            data: cities.map(c => c.fn),
+            backgroundColor: ['#2563eb','#dc2626','#f59e0b','#10b981','#8b5cf6','#0ea5e9','#ec4899','#84cc16','#f97316'],
+            borderWidth: 2,
+            borderColor: '#fff'
+        }]
+    },
+    options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+            legend: { position: 'right', labels: { font: { size: 9, family: 'Inter' }, color: '#64748b', boxWidth: 10, padding: 8 } }
+        }
+    }
+});
+</script>
+</body>
+</html>

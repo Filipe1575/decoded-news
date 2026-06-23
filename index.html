@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DECODED NEWS — Educação contra Fake News</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<header>
+    <div class="logo">DECODED NEWS</div>
+    <nav>
+        <a href="index.html" class="active" data-i18n="nav.home">Home</a>
+        <a href="tipos.html" data-i18n="nav.tipos">Tipos</a>
+        <a href="identificar.html" data-i18n="nav.identify">Como Identificar</a>
+        <a href="quiz.html" data-i18n="nav.quiz">Quiz</a>
+        <a href="exemplos.html" data-i18n="nav.examples">Exemplos</a>
+        <a href="IA.html" data-i18n="nav.ia">IA</a>
+        <a href="guerras.html" data-i18n="nav.war">WAR</a>
+        <a href="mapa.html" data-i18n="nav.map">Mapa</a>
+    </nav>
+    <div class="header-actions">
+        <button class="lang-toggle" aria-label="Trocar idioma">EN</button>
+        <button class="dark-toggle" id="darkToggle" aria-label="Alternar tema">Tema</button>
+    </div>
+    <button class="menu-mobile-btn" id="menuBtn" aria-label="Abrir menu">≡</button>
+    <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <a href="index.html"><span data-i18n="nav.home">Home</span></a>
+        <a href="tipos.html"><span data-i18n="nav.tipos">Tipos</span></a>
+        <a href="identificar.html"><span data-i18n="nav.identify">Como Identificar</span></a>
+        <a href="quiz.html"><span data-i18n="nav.quiz">Quiz</span></a>
+        <a href="exemplos.html"><span data-i18n="nav.examples">Exemplos</span></a>
+        <a href="IA.html"><span data-i18n="nav.ia">IA</span></a>
+        <a href="guerras.html"><span data-i18n="nav.war">WAR</span></a>
+        <a href="mapa.html"><span data-i18n="nav.map">Mapa</span></a>
+    </nav>
+    <div class="mobile-overlay" id="overlay"></div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-content reveal">
+        <span class="tag" data-i18n="hero.tag">EDUCAÇÃO MIDIÁTICA</span>
+        <h1 data-i18n="hero.h1">Fake News podem <em>manipular</em> milhares de pessoas em segundos.</h1>
+        <p data-i18n="hero.p">Aprenda a identificar desinformação, proteger sua opinião e compartilhar apenas conteúdos confiáveis.</p>
+        <button onclick="window.location.href='tipos.html'" data-i18n="hero.btn">Começar agora</button>
+    </div>
+</section>
+
+<!-- TICKER -->
+<section class="news-bar">
+    <div class="news-track">
+        Verifique a fonte &nbsp;<span>•</span>&nbsp; Desconfie de manchetes exageradas &nbsp;<span>•</span>&nbsp; Confira a data da publicação &nbsp;<span>•</span>&nbsp; Compare informações &nbsp;<span>•</span>&nbsp; Não compartilhe sem verificar &nbsp;<span>•</span>&nbsp; Cuidado com deepfakes &nbsp;<span>•</span>&nbsp; Verifique a fonte &nbsp;<span>•</span>&nbsp; Desconfie de manchetes exageradas &nbsp;<span>•</span>&nbsp; Confira a data da publicação &nbsp;<span>•</span>&nbsp; Compare informações &nbsp;<span>•</span>&nbsp; Não compartilhe sem verificar &nbsp;<span>•</span>&nbsp; Cuidado com deepfakes
+    </div>
+</section>
+
+<!-- CARDS NAVEGAÇÃO -->
+<section class="quick-links reveal">
+    <div class="quick-card" onclick="window.location.href='tipos.html'">
+        <div class="quick-card-icon"></div>
+        <h3 data-i18n="cards.tipos.h">Tipos de Fake News</h3>
+        <p data-i18n="cards.tipos.p">Clickbait, deepfake, conteúdo manipulado e muito mais.</p>
+    </div>
+    <div class="quick-card" onclick="window.location.href='identificar.html'">
+        <div class="quick-card-icon"></div>
+        <h3 data-i18n="cards.id.h">Como Identificar</h3>
+        <p data-i18n="cards.id.p">Técnicas práticas para verificar qualquer informação.</p>
+    </div>
+    <div class="quick-card" onclick="window.location.href='quiz.html'">
+        <div class="quick-card-icon"></div>
+        <h3 data-i18n="cards.quiz.h">Quiz Interativo</h3>
+        <p data-i18n="cards.quiz.p">Teste seu conhecimento com manchetes reais e falsas.</p>
+    </div>
+    <div class="quick-card" onclick="window.location.href='exemplos.html'">
+        <div class="quick-card-icon"></div>
+        <h3 data-i18n="cards.ex.h">Exemplos Reais</h3>
+        <p data-i18n="cards.ex.p">Casos documentados que enganaram milhares de pessoas.</p>
+    </div>
+    <div class="quick-card" onclick="window.location.href='IA.html'">
+        <div class="quick-card-icon"></div>
+        <h3 data-i18n="cards.ia.h">Fake News e IA</h3>
+        <p data-i18n="cards.ia.p">Deepfakes, clonagem de voz e imagens geradas por IA.</p>
+    </div>
+    <div class="quick-card" onclick="window.location.href='guerras.html'">
+        <div class="quick-card-icon"></div>
+        <h3 data-i18n="cards.war.h">Guerras e Conflitos</h3>
+        <p data-i18n="cards.war.p">Como a desinformação foi usada como arma histórica.</p>
+    </div>
+    <div class="quick-card" onclick="window.location.href='mapa.html'">
+        <div class="quick-card-icon"></div>
+        <h3 data-i18n="cards.map.h">Mapa de Criminalidade</h3>
+        <p data-i18n="cards.map.p">Veja estatísticas e fake news sobre crimes na Baixada Santista.</p>
+    </div>
+</section>
+
+
+
+<!-- ACORDEÃO -->
+<section class="accordion-section reveal">
+    <div class="accordion-inner">
+        <div class="section-header" style="text-align:left">
+            <span class="tag" data-i18n="accordion.title">SAIBA MAIS</span>
+            <h2 data-i18n="accordion.title">Principais tipos de desinformação</h2>
+            <p data-i18n="accordion.sub">Clique em cada tipo para entender como funciona.</p>
+        </div>
+        <div class="accordion">
+            <div class="accordion-item">
+                <button class="accordion-btn"><span data-i18n="acc.1.title">Clickbait</span><span class="accordion-arrow">▼</span></button>
+                <div class="accordion-body">
+                    <p data-i18n="acc.1.body">Títulos exagerados criados apenas para atrair cliques. O conteúdo raramente corresponde à promessa da manchete.</p>
+                    <a href="tipos.html" class="accordion-link">Ver mais</a>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-btn"><span data-i18n="acc.2.title">Deepfake</span><span class="accordion-arrow">▼</span></button>
+                <div class="accordion-body">
+                    <p data-i18n="acc.2.body">Vídeos e áudios manipulados por IA que colocam palavras na boca de pessoas reais. Cada vez mais difíceis de detectar.</p>
+                    <a href="IA.html" class="accordion-link">Ver mais</a>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-btn"><span data-i18n="acc.3.title">Fora de contexto</span><span class="accordion-arrow">▼</span></button>
+                <div class="accordion-body">
+                    <p data-i18n="acc.3.body">Fotos e vídeos reais usados com legendas falsas. Uma imagem de 2015 pode circular como se fosse de hoje.</p>
+                    <a href="tipos.html" class="accordion-link">Ver mais</a>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-btn"><span data-i18n="acc.4.title">Notícia fabricada</span><span class="accordion-arrow">▼</span></button>
+                <div class="accordion-body">
+                    <p data-i18n="acc.4.body">Conteúdo 100% inventado publicado em sites que imitam portais reais, com nomes de jornalistas inventados.</p>
+                    <a href="tipos.html" class="accordion-link">Ver mais</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-inner">
+        DECODED NEWS &nbsp;·&nbsp; <span data-i18n="footer.txt">Projeto educativo contra a desinformação</span>
+    </div>
+</footer>
+
+<button id="back-to-top" aria-label="Voltar ao topo">↑</button>
+
+<button class="checker-fab" id="checkerFab" aria-label="Verificar fake news">
+    <span class="checker-fab-icon">✓</span>
+</button>
+
+<div class="modal-overlay" id="checkerModal">
+    <div class="modal-box checker-modal-box">
+        <div class="modal-header">
+            <h3 data-i18n="checker.title">Verificador de Fake News</h3>
+            <button class="modal-close" id="checkerClose">×</button>
+        </div>
+        <p data-i18n="checker.p">Cole uma frase ou manchete suspeita:</p>
+        <div class="checker-input-group">
+            <input type="text" id="news-input" data-i18n="checker.placeholder" placeholder="Ex: Vacina causa microchip no sangue...">
+            <button onclick="simularVerificacao()" class="btn-accent" data-i18n="checker.btn">Analisar</button>
+        </div>
+        <div id="checker-result" class="checker-result-box hidden"></div>
+    </div>
+</div>
+
+<script src="java.js"></script>
+</body>
+</html>

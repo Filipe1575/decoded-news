@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DECODED NEWS | Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <div class="logo">DECODED NEWS</div>
+    <nav>
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="tipos.html" data-i18n="nav.tipos">Tipos</a>
+        <a href="identificar.html" data-i18n="nav.identify">Como Identificar</a>
+        <a href="quiz.html" data-i18n="nav.quiz">Quiz</a>
+        <a href="exemplos.html" data-i18n="nav.examples">Exemplos</a>
+        <a href="IA.html" data-i18n="nav.ia">IA</a>
+        <a href="guerras.html" data-i18n="nav.war">WAR</a>
+        <a href="mapa.html" data-i18n="nav.map">Mapa</a>
+    </nav>
+    <div class="header-actions">
+        <button class="lang-toggle" aria-label="Trocar idioma">EN</button>
+        <button class="dark-toggle" id="darkToggle" aria-label="Alternar tema">Tema</button>
+    </div>
+    <button class="menu-mobile-btn" id="menuBtn" aria-label="Abrir menu">≡</button>
+    <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <a href="index.html"><span data-i18n="nav.home">Home</span></a>
+        <a href="tipos.html"><span data-i18n="nav.tipos">Tipos</span></a>
+        <a href="identificar.html"><span data-i18n="nav.identify">Como Identificar</span></a>
+        <a href="quiz.html"><span data-i18n="nav.quiz">Quiz</span></a>
+        <a href="exemplos.html"><span data-i18n="nav.examples">Exemplos</span></a>
+        <a href="IA.html"><span data-i18n="nav.ia">IA</span></a>
+        <a href="guerras.html"><span data-i18n="nav.war">WAR</span></a>
+        <a href="mapa.html"><span data-i18n="nav.map">Mapa</span></a>
+    </nav>
+    <div class="mobile-overlay" id="overlay"></div>
+    </div>
+</header>
+
+    <section class="page-banner quiz-banner">
+        <div class="banner-content">
+            <span class="tag" data-i18n="quiz.banner.tag">QUIZ INTERATIVO</span>
+            <h1 data-i18n="quiz.banner.h1">Você consegue identificar Fake News?</h1>
+            <p data-i18n="quiz.banner.p">Leia as manchetes abaixo e descubra se são verdadeiras ou falsas.</p>
+        </div>
+    </section>
+
+    <section class="quiz-section">
+        <div class="quiz-container">
+
+            <div class="question-box">
+                <span class="question-number" data-i18n="quiz.question1.num">NOTÍCIA 01</span>
+                <h3 data-i18n="quiz.question1.h3">"Tomar refrigerante elimina a gripe instantaneamente."</h3>
+                <p class="question-description" data-i18n="quiz.question1.p">A informação viralizou em redes sociais sem comprovação científica.</p>
+                <div class="quiz-buttons">
+                    <button class="wrong" data-i18n="quiz.question1.true">VERDADE</button>
+                    <button class="correct" data-i18n="quiz.question1.false">FAKE NEWS</button>
+                </div>
+                <div class="feedback"></div>
+            </div>
+
+            <div class="question-box">
+                <span class="question-number" data-i18n="quiz.question2.num">NOTÍCIA 02</span>
+                <h3 data-i18n="quiz.question2.h3">"Imagens antigas podem ser usadas fora de contexto."</h3>
+                <p class="question-description" data-i18n="quiz.question2.p">Especialistas alertam que muitas Fake News utilizam fotos antigas para enganar pessoas.</p>
+                <div class="quiz-buttons">
+                    <button class="correct" data-i18n="quiz.question2.true">VERDADE</button>
+                    <button class="wrong" data-i18n="quiz.question2.false">FAKE NEWS</button>
+                </div>
+                <div class="feedback"></div>
+            </div>
+
+            <div class="question-box">
+                <span class="question-number" data-i18n="quiz.question3.num">NOTÍCIA 03</span>
+                <h3 data-i18n="quiz.question3.h3">"Celulares explodem automaticamente após atualizações."</h3>
+                <p class="question-description" data-i18n="quiz.question3.p">O boato circulou em aplicativos sem qualquer confirmação técnica.</p>
+                <div class="quiz-buttons">
+                    <button class="wrong" data-i18n="quiz.question3.true">VERDADE</button>
+                    <button class="correct" data-i18n="quiz.question3.false">FAKE NEWS</button>
+                </div>
+                <div class="feedback"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="quiz-section" style="padding-top:0;">
+        <div class="quiz-container">
+            <div class="checker-tool">
+                <h3 data-i18n="quiz.sim.title">Simulador de Verificação</h3>
+                <p data-i18n="quiz.sim.p">Cole uma frase ou manchete suspeita abaixo para simular uma checagem rápida:</p>
+                <div class="checker-input-group">
+                    <input type="text" id="news-input" data-i18n-placeholder="quiz.sim.placeholder" placeholder="Ex: Ganhe um brinde grátis clicando neste link agora...">
+                    <button onclick="simularVerificacao()" class="btn-accent" data-i18n="quiz.sim.btn">Analisar Notícia</button>
+                </div>
+                <div id="checker-result" class="checker-result-box hidden"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer data-i18n="footer.txt">DECODED NEWS &nbsp;·&nbsp; Projeto educativo contra a desinformação</footer>
+
+    <script>
+        const correctButtons = document.querySelectorAll(".correct");
+        const wrongButtons = document.querySelectorAll(".wrong");
+
+        correctButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                const questionBox = button.closest(".question-box");
+                const feedback = questionBox.querySelector(".feedback");
+                feedback.innerHTML = currentLang === 'pt'
+                    ? "Correto! Isso é uma Fake News."
+                    : "Correct! This is a Fake News.";
+                feedback.style.color = "#00b894";
+                questionBox.style.border = "3px solid #00b894";
+                disableButtons(questionBox);
+            });
+        });
+
+        wrongButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                const questionBox = button.closest(".question-box");
+                const feedback = questionBox.querySelector(".feedback");
+                feedback.innerHTML = currentLang === 'pt'
+                    ? "Errado! Essa notícia é falsa."
+                    : "Wrong! This story is false.";
+                feedback.style.color = "#ff3b3b";
+                questionBox.style.border = "3px solid #ff3b3b";
+                disableButtons(questionBox);
+            });
+        });
+
+        function disableButtons(questionBox) {
+            const buttons = questionBox.querySelectorAll("button");
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                btn.style.opacity = "0.6";
+                btn.style.cursor = "not-allowed";
+            });
+        }
+    </script>
+    <script src="java.js"></script>
+</body>
+</html>

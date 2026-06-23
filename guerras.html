@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DECODED NEWS | Fake News em Guerras</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+ <header>
+    <div class="logo">DECODED NEWS</div>
+    <nav>
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="tipos.html" data-i18n="nav.tipos">Tipos</a>
+        <a href="identificar.html" data-i18n="nav.identify">Como Identificar</a>
+        <a href="quiz.html" data-i18n="nav.quiz">Quiz</a>
+        <a href="exemplos.html" data-i18n="nav.examples">Exemplos</a>
+        <a href="IA.html" data-i18n="nav.ia">IA</a>
+        <a href="guerras.html" data-i18n="nav.war">WAR</a>
+        <a href="mapa.html" data-i18n="nav.map">Mapa</a>
+    </nav>
+
+        <div class="header-actions">
+        <button class="lang-toggle" aria-label="Trocar idioma">EN</button>
+        <button class="dark-toggle" id="darkToggle" aria-label="Alternar tema">Tema</button>
+    </div>
+    <button class="menu-mobile-btn" id="menuBtn" aria-label="Abrir menu">≡</button>
+    <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <a href="index.html"><span data-i18n="nav.home">Home</span></a>
+        <a href="tipos.html"><span data-i18n="nav.tipos">Tipos</span></a>
+        <a href="identificar.html"><span data-i18n="nav.identify">Como Identificar</span></a>
+        <a href="quiz.html"><span data-i18n="nav.quiz">Quiz</span></a>
+        <a href="exemplos.html"><span data-i18n="nav.examples">Exemplos</span></a>
+        <a href="IA.html"><span data-i18n="nav.ia">IA</span></a>
+        <a href="guerras.html"><span data-i18n="nav.war">WAR</span></a>
+        <a href="mapa.html"><span data-i18n="nav.map">Mapa</span></a>
+    </nav>
+    <div class="mobile-overlay" id="overlay"></div>
+    </div>
+</header>
+
+    <section class="page-banner" style="background: linear-gradient(rgba(0,0,0,0.80), rgba(179,0,0,0.60)), url('https://images.unsplash.com/photo-1586348943529-beaae6c28db9?q=80&w=1400') center/cover;">
+        <div class="banner-content">
+            <span class="tag" data-i18n="war.banner.tag">DESINFORMAÇÃO EM GUERRAS</span>
+            <h1 data-i18n="war.banner.h1">Fake News em Guerras e Conflitos</h1>
+            <p data-i18n="war.banner.p">Mentiras sempre foram uma arma de guerra. Veja como a desinformação moldou conflitos ao longo da história — e como ela opera hoje nas redes sociais.</p>
+        </div>
+    </section>
+
+    <section class="quick-links">
+        <div class="quick-card">
+            <h3 data-i18n="war.card1.h">Urgência e medo</h3>
+            <p data-i18n="war.card1.p">Em tempos de guerra, as pessoas ficam emocionalmente abaladas e buscam informações rapidamente. Esse estado de urgência reduz o pensamento crítico e facilita a propagação de mentiras sem verificação.</p>
+        </div>
+        <div class="quick-card">
+            <h3 data-i18n="war.card2.h">Lados com interesses</h3>
+            <p data-i18n="war.card2.p">Tanto o lado atacante quanto o defensivo têm interesse em controlar a narrativa. Governos, exércitos e grupos armados produzem desinformação estratégica para ganhar apoio interno e internacional.</p>
+        </div>
+        <div class="quick-card">
+            <h3 data-i18n="war.card3.h">Caos de informações</h3>
+            <p data-i18n="war.card3.p">Jornalistas têm acesso limitado a zonas de conflito. Esse vazio de informação confiável é preenchido por conteúdos não verificados, vídeos antigos e contas manipuladas que circulam livremente.</p>
+        </div>
+        <div class="quick-card">
+            <h3 data-i18n="war.card4.h">Tecnologia como arma</h3>
+            <p data-i18n="war.card4.p">Com inteligência artificial, hoje é possível criar áudios, vídeos e imagens falsas em minutos. Deepfakes de líderes políticos e militares são usados para gerar pânico, forçar rendições ou desmotivar o inimigo.</p>
+        </div>
+    </section>
+
+    <section class="news-posts">
+
+        <div class="news-post">
+            <img src="imgs/1_B64-IMG-fAv8uwB7dn-HsFVrwGOqQ.webp" alt="Propaganda da Primeira Guerra Mundial">
+            <span class="news-type fake-label" data-i18n="war.post1.category">Propaganda · 1914–1918</span>
+            <h2 data-i18n="war.post1.h2">Primeira Guerra Mundial: o nascimento da propaganda moderna</h2>
+            <p data-i18n="war.post1.p">O Reino Unido criou a Wellington House, um departamento secreto dedicado à produção de desinformação. Histórias sobre atrocidades alemãs eram inventadas e distribuídas para chocar a opinião pública mundial e justificar a entrada de países neutros na guerra. Cartazes, panfletos e manchetes fabricadas foram os primeiros "fake news" industrializados da história.</p>
+            <small data-i18n="war.post1.small">Fonte: History of Propaganda · Imperial War Museum, Londres</small>
+        </div>
+
+        <div class="news-post">
+            <img src="imgs/b19d5828-a8d2-403a-b037-50f96f315d97.png" alt="Propaganda estatal da Segunda Guerra Mundial">
+            <span class="news-type fake-label" data-i18n="war.post2.category">Propaganda Estatal · 1939–1945</span>
+            <h2 data-i18n="war.post2.h2">Segunda Guerra Mundial: Goebbels e o Ministério das Mentiras</h2>
+            <p data-i18n="war.post2.p">Joseph Goebbels transformou a desinformação em política estatal na Alemanha nazista. Rádio, cinema e jornais eram totalmente controlados para criar uma realidade paralela. A técnica do "grande mentiroso" — repetir uma mentira com tanta força que ela pareça verdadeira — foi sistematizada nesse período e ainda influencia estratégias de desinformação até hoje.</p>
+            <small data-i18n="war.post2.small">Fonte: Propaganda · Holocaust Encyclopedia, United States Holocaust Memorial Museum</small>
+        </div>
+
+        <div class="news-post">
+            <img src="imgs/tanque.avif" alt="Guerra do Golfo e desinformação">
+            <span class="news-type fake-label" data-i18n="war.post3.category">Depoimento Falso · 1990</span>
+            <h2 data-i18n="war.post3.h2">Guerra do Golfo: o depoimento inventado que enganou o Congresso dos EUA</h2>
+            <p data-i18n="war.post3.p">Uma menina de 15 anos chamada "Nayirah" testemunhou diante do Congresso dos EUA que soldados iraquianos estariam retirando bebês de incubadoras em hospitais do Kuwait. O depoimento comoveu senadores e foi usado para justificar a intervenção militar. Anos depois, ficou comprovado que ela era filha do embaixador kuwaitiano e a história havia sido totalmente fabricada por uma empresa de relações públicas contratada pelo governo do Kuwait.</p>
+            <small data-i18n="war.post3.small">Fonte: New York Times · Referência histórica amplamente documentada</small>
+        </div>
+
+        <div class="news-post">
+            <img src="imgs/zelensky.jpg" alt="Deepfake do presidente Zelensky">
+            <span class="news-type fake-label" data-i18n="war.post4.category">Deepfake · 2022</span>
+            <h2 data-i18n="war.post4.h2">'Zelensky' pede rendição em vídeo falso gerado por IA</h2>
+            <p data-i18n="war.post4.p">Um deepfake do presidente ucraniano Volodymyr Zelensky pedindo aos soldados que se rendessem foi publicado em sites ucranianos invadidos e no Facebook. O vídeo foi rapidamente desmentido pelo próprio Zelensky em transmissão ao vivo, mas já havia acumulado centenas de milhares de visualizações e causado confusão na população.</p>
+            <small data-i18n="war.post4.small">Verificado por: Reuters Fact Check · Março de 2022</small>
+        </div>
+
+        <div class="news-post">
+            <img src="imgs/arma3.jpeg" alt="Cenas falsas do jogo ARMA 3">
+            <span class="news-type fake-label" data-i18n="war.post5.category">Vídeo Falso · 2022</span>
+            <h2 data-i18n="war.post5.h2">Cenas do jogo ARMA 3 viralizaram como batalha real na Ucrânia</h2>
+            <p data-i18n="war.post5.p">Nos primeiros dias da invasão russa, vídeos do simulador militar ARMA 3 — com gráficos extremamente realistas — foram compartilhados por milhões de pessoas e até por veículos de imprensa como se fossem imagens reais de combate aéreo sobre o território ucraniano. O criador original chegou a publicar um pedido pedindo para que canais parassem de usar suas gravações fora de contexto.</p>
+            <small data-i18n="war.post5.small">Verificado por: AFP Checamos · Fevereiro de 2022</small>
+        </div>
+
+        <div class="news-post">
+            <img src="imgs/moça.webp" alt="Destruição no Iêmen usada fora de contexto">
+            <span class="news-type fake-label" data-i18n="war.post6.category">Foto Falsa · 2023</span>
+            <h2 data-i18n="war.post6.h2">Imagens de destruição no Iêmen foram compartilhadas como se fossem de Gaza</h2>
+            <p data-i18n="war.post6.p">Dezenas de fotos de destruição da guerra no Iêmen, antigas, foram recicladas com novas legendas durante o conflito em Gaza em 2023. Agências de checagem identificaram imagens que circulavam há mais de quatro anos sendo apresentadas como vídeos recentes do conflito no Oriente Médio, enganando milhões de usuários nas redes sociais.</p>
+            <small data-i18n="war.post6.small">Verificado por: Agência Lupa · Outubro de 2023</small>
+        </div>
+
+    </section>
+
+    <section class="quick-links" style="background:#111;">
+        <div class="quick-card" style="background:#1a1a1a; border-top-color:#b30000;">
+            <h3 style="color:white;" data-i18n="war.tip1.h">Fique atento à urgência</h3>
+            <p style="color:#aaa;" data-i18n="war.tip1.p">Conteúdos de guerra são feitos para gerar urgência e emoção. Antes de compartilhar, espere alguns minutos e questione o que você está sentindo. Medo e raiva são os maiores aliados da desinformação.</p>
+        </div>
+        <div class="quick-card" style="background:#1a1a1a; border-top-color:#b30000;">
+            <h3 style="color:white;" data-i18n="war.tip2.h">Faça busca reversa</h3>
+            <p style="color:#aaa;" data-i18n="war.tip2.p">Use Google Imagens ou TinEye para descobrir onde aquela foto apareceu primeiro. A maioria das imagens falsas em guerras são fotos reais de outros conflitos usadas fora de contexto.</p>
+        </div>
+        <div class="quick-card" style="background:#1a1a1a; border-top-color:#b30000;">
+            <h3 style="color:white;" data-i18n="war.tip3.h">Consulte agências internacionais</h3>
+            <p style="color:#aaa;" data-i18n="war.tip3.p">Reuters, AFP, AP e BBC têm equipes dedicadas à checagem em zonas de conflito. Se o evento for real e relevante, essas agências terão cobertura verificada disponível gratuitamente.</p>
+        </div>
+        <div class="quick-card" style="background:#1a1a1a; border-top-color:#b30000;">
+            <h3 style="color:white;" data-i18n="war.tip4.h">Use InVID para vídeos</h3>
+            <p style="color:#aaa;" data-i18n="war.tip4.p">A extensão gratuita InVID/WeVerify analisa vídeos quadro a quadro e verifica metadados. É a ferramenta mais usada por jornalistas profissionais para identificar vídeos manipulados ou antigos.</p>
+        </div>
+    </section>
+
+    <footer data-i18n="footer.txt">DECODED NEWS &nbsp;·&nbsp; Projeto educativo contra a desinformação</footer>
+
+    <script src="java.js"></script>
+</body>
+</html>

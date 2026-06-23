@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DECODED NEWS | Exemplos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <div class="logo">DECODED NEWS</div>
+    <nav>
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="tipos.html" data-i18n="nav.tipos">Tipos</a>
+        <a href="identificar.html" data-i18n="nav.identify">Como Identificar</a>
+        <a href="quiz.html" data-i18n="nav.quiz">Quiz</a>
+        <a href="exemplos.html" data-i18n="nav.examples">Exemplos</a>
+        <a href="IA.html" data-i18n="nav.ia">IA</a>
+        <a href="guerras.html" data-i18n="nav.war">WAR</a>
+        <a href="mapa.html" data-i18n="nav.map">Mapa</a>
+    </nav>
+
+    <div class="header-actions">
+        <button class="lang-toggle" aria-label="Trocar idioma">EN</button>
+        <button class="dark-toggle" id="darkToggle" aria-label="Alternar tema">Tema</button>
+    </div>
+    <button class="menu-mobile-btn" id="menuBtn" aria-label="Abrir menu">≡</button>
+    <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <a href="index.html"><span data-i18n="nav.home">Home</span></a>
+        <a href="tipos.html"><span data-i18n="nav.tipos">Tipos</span></a>
+        <a href="identificar.html"><span data-i18n="nav.identify">Como Identificar</span></a>
+        <a href="quiz.html"><span data-i18n="nav.quiz">Quiz</span></a>
+        <a href="exemplos.html"><span data-i18n="nav.examples">Exemplos</span></a>
+        <a href="IA.html"><span data-i18n="nav.ia">IA</span></a>
+        <a href="guerras.html"><span data-i18n="nav.war">WAR</span></a>
+        <a href="mapa.html"><span data-i18n="nav.map">Mapa</span></a>
+    </nav>
+    <div class="mobile-overlay" id="overlay"></div>
+</header>
+
+    <section class="page-banner">
+        <div class="banner-content">
+            <span class="tag" data-i18n="examples.banner.tag">CASOS REAIS</span>
+            <h1 data-i18n="examples.banner.h1">Exemplos de Fake News</h1>
+            <p data-i18n="examples.banner.p">Conheça casos reais de desinformação que enganaram milhares de pessoas.</p>
+        </div>
+    </section>
+
+    <section class="news-posts">
+
+        <div class="news-post">
+            <img src="imgs/Captura de tela 2026-06-01 214018.png" alt="Foto caso real 2012">
+            <div class="post-content">
+                <span class="post-category fake-label" data-i18n="examples.post1.category">Caso Real · 2012</span>
+                <h2 data-i18n="examples.post1.h2">Mulher brasileira que teria 11 filhos no ventre era mentira</h2>
+                <p data-i18n="examples.post1.p">A imagem desta mulher grávida circulou nas redes sociais com a afirmação falsa de que ela carregava 11 bebês. A foto foi tirada de contexto e associada a uma narrativa completamente inventada, enganando milhares de pessoas em segundos.</p>
+                <small data-i18n="examples.post1.small">Publicado em: 14 de março de 2012 · Fonte: Agência Lupa</small>
+            </div>
+        </div>
+
+        <div class="news-post">
+            <img src="imgs/b19d5828-a8d2-403a-b037-50f96f315d97.png" alt="Exemplo de fraude digital">
+            <div class="post-content">
+                <span class="post-category fake-label" data-i18n="examples.post2.category">Deepfake</span>
+                <h2 data-i18n="examples.post2.h2">Vídeos manipulados com Inteligência Artificial são usados em golpes online</h2>
+                <p data-i18n="examples.post2.p">Deepfakes utilizam Inteligência Artificial para criar vídeos falsos extremamente realistas. Um caso famoso envolveu um vídeo falso do jornalista Pedro Bial promovendo golpes financeiros.</p>
+                <small data-i18n="examples.post2.small">Especialistas alertam para o aumento de golpes digitais utilizando IA generativa.</small>
+            </div>
+        </div>
+
+        <div class="news-post">
+            <img src="imgs/1_B64-IMG-fAv8uwB7dn-HsFVrwGOqQ.webp" alt="Imagem relacionada a desinformação em desastre">
+            <div class="post-content">
+                <span class="post-category fake-label" data-i18n="examples.post3.category">Enchentes RS</span>
+                <h2 data-i18n="examples.post3.h2">Fake news durante enchentes no Rio Grande do Sul espalharam pânico nas redes</h2>
+                <p data-i18n="examples.post3.p">Durante as enchentes no Rio Grande do Sul, vídeos antigos e informações manipuladas foram compartilhados como se fossem atuais, causando desinformação e dificultando ações de ajuda.</p>
+                <small data-i18n="examples.post3.small">Autoridades precisaram desmentir boatos diariamente.</small>
+            </div>
+        </div>
+
+        <div class="news-post">
+            <img src="imgs/quiz.webp" alt="Imagem relacionada a saúde e desinformação">
+            <div class="post-content">
+                <span class="post-category fake-label" data-i18n="examples.post4.category">Saúde</span>
+                <h2 data-i18n="examples.post4.h2">Fake news sobre vacinas reduziram índices de vacinação no Brasil</h2>
+                <p data-i18n="examples.post4.p">Durante e após a pandemia da COVID-19, diversas informações falsas sobre vacinas circularam nas redes sociais, gerando medo e aumentando a hesitação vacinal.</p>
+                <small data-i18n="examples.post4.small">OMS classificou a desinformação como ameaça global.</small>
+            </div>
+        </div>
+
+        <div class="news-post">
+            <img src="imgs/Captura de tela 2026-06-01 213912.png" alt="Eleições e desinformação">
+            <div class="post-content">
+                <span class="post-category fake-label" data-i18n="examples.post5.category">Eleições</span>
+                <h2 data-i18n="examples.post5.h2">Mensagens falsas influenciaram debates políticos em eleições brasileiras</h2>
+                <p data-i18n="examples.post5.p">Redes sociais e aplicativos de mensagens foram utilizados para espalhar conteúdos enganosos, montagens e boatos políticos durante períodos eleitorais.</p>
+                <small data-i18n="examples.post5.small">Tribunais e plataformas digitais intensificaram ações contra desinformação eleitoral.</small>
+            </div>
+        </div>
+
+    </section>
+
+    <footer data-i18n="footer.txt">DECODED NEWS &nbsp;·&nbsp; Projeto educativo contra a desinformação</footer>
+
+    <script src="java.js"></script>
+</body>
+</html>
